@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in Education | Transforming Learning in 2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #06b6d4;
+            --bg: #f8fafc;
+            --bg-dark: #0f172a;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --card-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            --card-shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0.75rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #2563eb 100%);
+            padding: 8rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="50" cy="70" r="1" fill="rgba(255,255,255,0.12)"/><circle cx="10" cy="80" r="0.8" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="10" r="1.2" fill="rgba(255,255,255,0.07)"/></svg>');
+            background-size: 200px;
+            opacity: 0.5;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.2);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            color: var(--accent);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1.2rem;
+            line-height: 1.15;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(90deg, var(--accent), #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 650px;
+            margin: 0 auto 2rem;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        .hero-stat {
+            text-align: center;
+        }
+        .hero-stat-number {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 0.2rem;
+        }
+
+        /* Sections */
+        section { padding: 5rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+        .section-header p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .section-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(124,58,237,0.1));
+            color: var(--primary);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Overview / Image Banner */
+        .overview-section { background: var(--white); }
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .overview-image {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow-lg);
+        }
+        .overview-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        .overview-text h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .overview-text p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.02rem;
+        }
+
+        /* Stats Cards */
+        .stats-section { background: var(--bg); }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .stat-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--card-shadow-lg);
+        }
+        .stat-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin: 0 auto 1rem;
+        }
+        .stat-card h3 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+        }
+        .stat-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        .stat-blue .stat-icon { background: rgba(37,99,235,0.1); }
+        .stat-blue h3 { color: var(--primary); }
+        .stat-purple .stat-icon { background: rgba(124,58,237,0.1); }
+        .stat-purple h3 { color: var(--secondary); }
+        .stat-cyan .stat-icon { background: rgba(6,182,212,0.1); }
+        .stat-cyan h3 { color: var(--accent); }
+        .stat-green .stat-icon { background: rgba(16,185,129,0.1); }
+        .stat-green h3 { color: #10b981; }
+
+        /* Key Benefits */
+        .benefits-section { background: var(--white); }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+        .benefit-card {
+            background: var(--bg);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--card-shadow-lg);
+        }
+        .benefit-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .benefit-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .benefit-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Tools Section */
+        .tools-section { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: var(--white); }
+        .tools-section .section-header h2 { color: var(--white); }
+        .tools-section .section-header p { color: #94a3b8; }
+        .tools-section .section-tag { background: rgba(6,182,212,0.2); color: var(--accent); }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .tool-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 1.75rem;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .tool-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+        .tool-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+        .tool-desc {
+            color: #94a3b8;
+            font-size: 0.92rem;
+            margin-bottom: 0.75rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(6,182,212,0.15);
+            color: var(--accent);
+            padding: 0.2rem 0.7rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Global Adoption */
+        .global-section { background: var(--bg); }
+        .global-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .global-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s;
+        }
+        .global-card:hover { transform: translateY(-3px); }
+        .global-card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .global-card-body { padding: 1.5rem; }
+        .global-card-body h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .global-card-body p {
+            color: var(--text-light);
+            font-size: 0.92rem;
+        }
+        .country-flag {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        /* Market Section */
+        .market-section { background: var(--white); }
+        .market-card {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-radius: 20px;
+            padding: 3rem;
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .market-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -50%;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+        .market-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .market-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .market-stat-item h4 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+        .market-stat-item p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.3rem;
+        }
+
+        /* Gallery */
+        .gallery-section { background: var(--bg); }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        .gallery-item:hover { transform: scale(1.02); }
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem 1rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Challenges */
+        .challenges-section { background: var(--white); }
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .challenge-card {
+            background: var(--bg);
+            border-radius: 16px;
+            padding: 1.75rem;
+            border-left: 4px solid;
+            transition: transform 0.3s;
+        }
+        .challenge-card:hover { transform: translateY(-3px); }
+        .challenge-card.red { border-color: #ef4444; }
+        .challenge-card.amber { border-color: #f59e0b; }
+        .challenge-card.blue { border-color: #3b82f6; }
+        .challenge-card.purple { border-color: #8b5cf6; }
+        .challenge-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .challenge-card p {
+            color: var(--text-light);
+            font-size: 0.92rem;
+        }
+
+        /* Future Section */
+        .future-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #7c3aed 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        .future-section .section-header h2 { color: var(--white); }
+        .future-section .section-header p { color: #94a3b8; }
+        .future-section .section-tag { background: rgba(124,58,237,0.3); color: #c4b5fd; }
+        .timeline {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .timeline-item {
+            padding: 1.5rem 0 1.5rem 2.5rem;
+            border-left: 2px solid rgba(255,255,255,0.2);
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 1.75rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 10px rgba(6,182,212,0.5);
+        }
+        .timeline-year {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.3rem;
+        }
+        .timeline-item h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+        .timeline-item p {
+            color: #94a3b8;
+            font-size: 0.92rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: #94a3b8;
+            text-align: center;
+            padding: 2.5rem 2rem;
+        }
+        footer p { font-size: 0.85rem; }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero-stats { gap: 1.5rem; }
+            .hero-stat-number { font-size: 1.8rem; }
+            .overview-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .market-stats { gap: 2rem; }
+            .market-stat-item h4 { font-size: 1.8rem; }
+            section { padding: 3rem 1.25rem; }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate { animation: fadeInUp 0.6s ease forwards; }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-container">
+        <a href="#" class="nav-logo"><span>AI</span> Education</a>
+        <ul class="nav-links">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#stats">Statistics</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#tools">Tools</a></li>
+            <li><a href="#global">Global</a></li>
+            <li><a href="#challenges">Challenges</a></li>
+            <li><a href="#future">Future</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">2026 Comprehensive Report</div>
+        <h1>How <span class="highlight">Artificial Intelligence</span> is Transforming Education</h1>
+        <p>From personalized learning paths to intelligent tutoring systems, AI is revolutionizing how we teach and learn across the globe.</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-number">87%</div>
+                <div class="hero-stat-label">Schools Using AI Globally</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">$112.3B</div>
+                <div class="hero-stat-label">Projected Market by 2034</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">92%</div>
+                <div class="hero-stat-label">Higher Ed Students Using AI</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">37.2%</div>
+                <div class="hero-stat-label">Annual Growth Rate (CAGR)</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Overview -->
+<section id="overview" class="overview-section">
+    <div class="container">
+        <div class="overview-grid">
+            <div class="overview-image">
+                <img src="https://iasgyan.sgp1.digitaloceanspaces.com/images/AI_transforming_teaching_and.jpg" alt="AI Transforming Teaching and Learning" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22><rect fill=%22%231e3a5f%22 width=%22600%22 height=%22400%22/><text fill=%22%2394a3b8%22 font-family=%22sans-serif%22 font-size=%2220%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22>AI in Education</text></svg>'">
+            </div>
+            <div class="overview-text">
+                <span class="section-tag">Overview</span>
+                <h3>The AI Revolution in Classrooms</h3>
+                <p>Artificial Intelligence has become a cornerstone of modern education, fundamentally reshaping how students learn, how teachers teach, and how institutions operate. By 2025, 87% of schools worldwide had implemented some form of AI technology, marking a dramatic shift from just a few years prior.</p>
+                <p>The adoption surge is driven by AI's ability to personalize learning at scale, automate administrative tasks, provide real-time feedback, and identify students who need additional support before they fall behind. Teachers report saving an average of <strong>6 weeks per year</strong> on administrative tasks alone.</p>
+                <p>From K-12 classrooms to university lecture halls, AI tools are enabling a more adaptive, efficient, and inclusive educational experience for millions of learners worldwide.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Statistics -->
+<section id="stats" class="stats-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">By the Numbers</span>
+            <h2>AI Education at a Glance</h2>
+            <p>The latest data reveals unprecedented adoption and transformative outcomes across all levels of education.</p>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card stat-blue">
+                <div class="stat-icon">&#x1F393;</div>
+                <h3>83%</h3>
+                <p>K-12 teachers have adopted AI tools in their classrooms as of 2025</p>
+            </div>
+            <div class="stat-card stat-purple">
+                <div class="stat-icon">&#x1F4C8;</div>
+                <h3>92%</h3>
+                <p>Higher education students regularly use AI tools, up from 66% in 2024</p>
+            </div>
+            <div class="stat-card stat-cyan">
+                <div class="stat-icon">&#x2705;</div>
+                <h3>+15%</h3>
+                <p>Improvement in student pass rates with AI-assisted learning programs</p>
+            </div>
+            <div class="stat-card stat-green">
+                <div class="stat-icon">&#x1F4DA;</div>
+                <h3>70%</h3>
+                <p>Increase in course completion rates when AI personalization is applied</p>
+            </div>
+            <div class="stat-card stat-blue">
+                <div class="stat-icon">&#x23F0;</div>
+                <h3>6 Weeks</h3>
+                <p>Average time teachers save per year on admin tasks through AI automation</p>
+            </div>
+            <div class="stat-card stat-purple">
+                <div class="stat-icon">&#x1F4B0;</div>
+                <h3>$7.57B</h3>
+                <p>Global AI in education market value in 2025, growing rapidly year-over-year</p>
+            </div>
+            <div class="stat-card stat-cyan">
+                <div class="stat-icon">&#x1F310;</div>
+                <h3>175+</h3>
+                <p>Countries with active AI education initiatives and pilot programs</p>
+            </div>
+            <div class="stat-card stat-green">
+                <div class="stat-icon">&#x1F916;</div>
+                <h3>400+</h3>
+                <p>AI-powered education tools and platforms available to educators in 2026</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Benefits -->
+<section id="benefits" class="benefits-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Impact</span>
+            <h2>How AI Benefits Education</h2>
+            <p>AI delivers measurable improvements across teaching, learning, and institutional operations.</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">&#x1F3AF;</div>
+                <h3>Personalized Learning Paths</h3>
+                <p>AI algorithms analyze individual student performance, learning speed, and preferences to create customized curricula. Each student receives content tailored to their level, ensuring no one is left behind or held back.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">&#x1F4AC;</div>
+                <h3>Intelligent Tutoring Systems</h3>
+                <p>24/7 AI tutors provide instant, on-demand help with homework and concepts. These systems adapt their explanations based on student understanding, offering multiple approaches until mastery is achieved.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">&#x1F4DD;</div>
+                <h3>Automated Assessment & Grading</h3>
+                <p>AI can grade essays, assignments, and exams with high accuracy, providing detailed feedback in seconds rather than days. This frees teachers to focus on higher-value interactions with students.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">&#x26A0;&#xFE0F;</div>
+                <h3>Early Intervention & At-Risk Detection</h3>
+                <p>Predictive analytics identify students at risk of dropping out or falling behind, enabling early intervention. Schools using these systems have seen dropout rates decrease by up to 25%.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">&#x267F;</div>
+                <h3>Accessibility & Inclusion</h3>
+                <p>AI-powered tools break down barriers for students with disabilities through real-time captioning, text-to-speech, language translation, and adaptive interfaces that accommodate diverse learning needs.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">&#x1F4CA;</div>
+                <h3>Data-Driven Decision Making</h3>
+                <p>Institutions leverage AI analytics to optimize resource allocation, curriculum design, and student support services, leading to better outcomes across the board.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI Tools in Education -->
+<section id="tools" class="tools-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Ecosystem</span>
+            <h2>Leading AI Education Tools</h2>
+            <p>The most widely adopted AI platforms transforming classrooms in 2026.</p>
+        </div>
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-name">MagicSchool AI</div>
+                <div class="tool-desc">All-in-one AI platform for teachers with 60+ tools for lesson planning, rubric creation, differentiation, and assessment generation.</div>
+                <span class="tool-tag">K-12</span>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">Khanmigo</div>
+                <div class="tool-desc">Khan Academy's AI tutor powered by GPT-4, offering Socratic dialogue-based tutoring, writing coaching, and career guidance.</div>
+                <span class="tool-tag">K-12 & Higher Ed</span>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">Gradescope</div>
+                <div class="tool-desc">AI-assisted grading platform that reduces grading time by 70%, supporting handwritten and typed assignments with rubric-based evaluation.</div>
+                <span class="tool-tag">Higher Education</span>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">Curipod</div>
+                <div class="tool-desc">AI-powered interactive lesson generator that creates engaging presentations with polls, drawings, and reflection activities in minutes.</div>
+                <span class="tool-tag">K-12</span>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">Eduaide.AI</div>
+                <div class="tool-desc">Comprehensive teaching assistant that generates lesson plans, assessments, feedback templates, and instructional materials across subjects.</div>
+                <span class="tool-tag">All Levels</span>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">Brisk Teaching</div>
+                <div class="tool-desc">Chrome extension that brings AI capabilities directly into Google Docs, Slides, and other tools teachers already use daily.</div>
+                <span class="tool-tag">K-12</span>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">Century Tech</div>
+                <div class="tool-desc">Adaptive learning platform that uses neuroscience and AI to create personalized learning pathways and track micro-level student progress.</div>
+                <span class="tool-tag">K-12 & Higher Ed</span>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">Cognii</div>
+                <div class="tool-desc">Virtual learning assistant specializing in open-response assessments, providing real-time conversational feedback on written answers.</div>
+                <span class="tool-tag">Higher Education</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Global Adoption -->
+<section id="global" class="global-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Worldwide</span>
+            <h2>Global AI Education Adoption</h2>
+            <p>Countries around the world are integrating AI into education at different scales and approaches.</p>
+        </div>
+        <div class="global-grid">
+            <div class="global-card">
+                <img class="global-card-img" src="https://epe.brightspotcdn.com/dims4/default/068dae5/2147483647/strip/true/crop/1500x1001+0+0/resize/840x561!/quality/90/?url=https%3A%2F%2Fepe-brightspot.s3.us-east-1.amazonaws.com%2F42%2Fc0%2F2e0fcf594eb1bfe39a40d07cdfa1%2Fteachers-and-ai-03-bs.jpg" alt="Teachers using AI in classrooms" onerror="this.parentElement.style.display='none'">
+                <div class="global-card-body">
+                    <h3><span class="country-flag">&#x1F1E8;&#x1F1F3;</span>China</h3>
+                    <p>Leading global AI education integration with <strong>95% of secondary schools</strong> using AI tools daily. Massive government investment in smart classroom infrastructure and AI curriculum development.</p>
+                </div>
+            </div>
+            <div class="global-card">
+                <img class="global-card-img" src="https://s39613.pcdn.co/wp-content/uploads/2025/07/iStock-1605523233-scaled.jpg" alt="Collaborative AI Classroom" onerror="this.parentElement.style.display='none'">
+                <div class="global-card-body">
+                    <h3><span class="country-flag">&#x1F1EB;&#x1F1EE;</span>Finland</h3>
+                    <p><strong>91% of public schools</strong> use AI for personalized learning. Finland's approach emphasizes AI as a tool for equity, ensuring every student receives tailored support regardless of background.</p>
+                </div>
+            </div>
+            <div class="global-card">
+                <img class="global-card-img" src="https://oxmaint.com/assets/img/blog/ai-powered-smart-classrooms-technology-learning-environments.png" alt="Smart Classrooms" onerror="this.parentElement.style.display='none'">
+                <div class="global-card-body">
+                    <h3><span class="country-flag">&#x1F1FA;&#x1F1F8;</span>United States</h3>
+                    <p><strong>83% of K-12 teachers</strong> have adopted AI tools. The U.S. focuses on both integration and AI literacy, with growing emphasis on teaching students how AI works alongside using AI to learn.</p>
+                </div>
+            </div>
+            <div class="global-card">
+                <img class="global-card-img" src="https://ik.imagekit.io/edtechdigit/usaii/images/2025/06/ai-in-education-classroom-integration-and-impact-in-2026.png" alt="AI in Education 2026" onerror="this.parentElement.style.display='none'">
+                <div class="global-card-body">
+                    <h3><span class="country-flag">&#x1F1EA;&#x1F1FA;</span>European Union</h3>
+                    <p>The EU's AI Act sets global standards for ethical AI in education. Member states balance innovation with strong data privacy protections and human oversight requirements for educational AI.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Market Growth -->
+<section class="market-section">
+    <div class="container">
+        <div class="market-card">
+            <h3>AI Education Market Trajectory</h3>
+            <div class="market-stats">
+                <div class="market-stat-item">
+                    <h4>$7.57B</h4>
+                    <p>Market Size (2025)</p>
+                </div>
+                <div class="market-stat-item">
+                    <h4>$112.3B</h4>
+                    <p>Projected by 2034</p>
+                </div>
+                <div class="market-stat-item">
+                    <h4>37.2%</h4>
+                    <p>CAGR Growth Rate</p>
+                </div>
+                <div class="market-stat-item">
+                    <h4>14.8x</h4>
+                    <p>Growth Multiple</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Image Gallery -->
+<section class="gallery-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Visual Insights</span>
+            <h2>AI Education in Action</h2>
+            <p>A glimpse into how AI is being used in classrooms and learning environments worldwide.</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://epe.brightspotcdn.com/dims4/default/068dae5/2147483647/strip/true/crop/1500x1001+0+0/resize/840x561!/quality/90/?url=https%3A%2F%2Fepe-brightspot.s3.us-east-1.amazonaws.com%2F42%2Fc0%2F2e0fcf594eb1bfe39a40d07cdfa1%2Fteachers-and-ai-03-bs.jpg" alt="Teachers collaborating with AI tools" onerror="this.closest('.gallery-item').style.display='none'">
+                <div class="gallery-caption">Teachers integrating AI into classroom instruction</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://s39613.pcdn.co/wp-content/uploads/2025/07/iStock-1605523233-scaled.jpg" alt="Collaborative AI learning" onerror="this.closest('.gallery-item').style.display='none'">
+                <div class="gallery-caption">Students collaborating with AI-powered learning tools</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://iasgyan.sgp1.digitaloceanspaces.com/images/AI_transforming_teaching_and.jpg" alt="AI transforming teaching" onerror="this.closest('.gallery-item').style.display='none'">
+                <div class="gallery-caption">AI transforming traditional teaching methodologies</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Challenges -->
+<section id="challenges" class="challenges-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Considerations</span>
+            <h2>Challenges & Ethical Concerns</h2>
+            <p>While AI offers tremendous promise, critical challenges must be addressed responsibly.</p>
+        </div>
+        <div class="challenges-grid">
+            <div class="challenge-card red">
+                <h3>Data Privacy & Security</h3>
+                <p>Student data is among the most sensitive. AI systems collect vast amounts of behavioral, academic, and personal information, requiring robust privacy frameworks and compliance with regulations like FERPA and GDPR.</p>
+            </div>
+            <div class="challenge-card amber">
+                <h3>Digital Divide & Equity</h3>
+                <p>Not all schools have equal access to AI technology. Rural, underfunded, and developing-world institutions risk falling further behind without targeted investment and infrastructure support.</p>
+            </div>
+            <div class="challenge-card blue">
+                <h3>Academic Integrity</h3>
+                <p>The rise of AI writing and problem-solving tools challenges traditional assessment methods. Institutions must rethink how they evaluate learning and develop AI-literate assessment strategies.</p>
+            </div>
+            <div class="challenge-card purple">
+                <h3>Algorithmic Bias</h3>
+                <p>AI systems can perpetuate or amplify existing biases in educational outcomes. Ensuring fairness requires diverse training data, regular auditing, and transparency in how AI makes recommendations.</p>
+            </div>
+            <div class="challenge-card red">
+                <h3>Teacher Training & Readiness</h3>
+                <p>Many educators lack adequate training to effectively integrate AI tools. Professional development programs must scale rapidly to keep pace with technology deployment.</p>
+            </div>
+            <div class="challenge-card amber">
+                <h3>Over-Reliance on Technology</h3>
+                <p>Balancing AI assistance with critical thinking development is crucial. Students must learn to use AI as a tool, not a crutch, maintaining human creativity and independent reasoning skills.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Future Outlook -->
+<section id="future" class="future-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">What's Next</span>
+            <h2>The Future of AI in Education</h2>
+            <p>Emerging trends and predictions for how AI will continue to transform learning.</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">2026 - Now</div>
+                <h3>AI-Powered Adaptive Curricula</h3>
+                <p>Real-time curriculum adjustment based on individual and class-wide performance data, ensuring optimal pacing and difficulty for every learner.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2027</div>
+                <h3>Multimodal AI Tutors</h3>
+                <p>AI tutors that combine text, voice, and visual interaction to provide immersive, conversational learning experiences indistinguishable from human tutoring.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2028</div>
+                <h3>AI-Driven Credentialing</h3>
+                <p>Shift from degree-based to competency-based credentials, with AI systems continuously assessing and certifying skills in real-time throughout a learner's journey.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2029</div>
+                <h3>Fully Personalized Learning Ecosystems</h3>
+                <p>AI orchestrates entire learning experiences — from content selection and pacing to assessment and career guidance — tailored uniquely to each student's goals and abilities.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2030+</div>
+                <h3>Universal AI-Assisted Education Access</h3>
+                <p>AI democratizes quality education globally, providing world-class tutoring and resources to every learner regardless of geography, income, or background.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>AI in Education Research Report &copy; 2026 | Data sourced from UNESCO, World Economic Forum, EdTech Magazine, and leading research institutions</p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem;">Built with research data from comprehensive AI education studies</p>
+</footer>
+
+<script>
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.stat-card, .benefit-card, .tool-card, .global-card, .challenge-card, .timeline-item, .gallery-item').forEach(el => {
+        el.style.opacity = '0';
+        observer.observe(el);
+    });
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // Counter animation for hero stats
+    function animateCounters() {
+        document.querySelectorAll('.hero-stat-number').forEach(counter => {
+            const text = counter.textContent;
+            if (text.includes('%')) {
+                const target = parseFloat(text);
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = text;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current) + '%';
+                    }
+                }, 30);
+            }
+        });
+    }
+    animateCounters();
+</script>
+
+</body>
+</html>
